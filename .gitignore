@@ -1,0 +1,7 @@
+# Ignores environment
+venv/
+.env
+.flaskenv
+
+# Ignores Cache
+__pycache__
