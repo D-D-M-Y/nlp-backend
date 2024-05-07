@@ -8,3 +8,6 @@ __pycache__/
 
 # Ignore .vscode
 .vscode/
+
+# Ignore files created by parser
+files/
