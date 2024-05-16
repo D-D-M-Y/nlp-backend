@@ -67,7 +67,8 @@
         "Engineering"
     ],
         "response": [
-            "So that's the kind of business you're looking to make a wiki about"
+            "So that's the kind of business you're looking to make a wiki about",
+            "Ah that's what you're looking to do."
         ]
     },
     {
@@ -89,7 +90,7 @@
             "internal auditors",
             "compliance officers"
         ],
-        "response": ["So that's who you're looking to make a wiki for"]
+        "response": ["So that's who you're looking to make a wiki for", "So that's your audience"]
     },
     {
         "tag": "Structure",
@@ -101,7 +102,7 @@
         "Legal",
         "Miscellaneous"],
         "response": [
-            "I understand."
+            "I understand.", "Oh I see"
         ]
     }
 ]
