@@ -1,0 +1,108 @@
+{
+    "intents":[
+    {
+        "tag": "greeting",
+        "input": ["Hi", "Hello", "Howdy", "Hi There", "Good day", "Good morning", "Good evening"],
+        "response": ["Hello, I understand you're looking to create a wiki ",
+        "Greetings! I see you're interested in setting up a wiki",
+        "Hey there! I noticed you're keen on establishing a wiki",
+        "Hello! It seems like you're interested in starting a wiki",
+        "Hi! I understand you're considering starting a wiki",
+        "Hey! I gather you're thinking about launching a wiki"]
+    },
+    {
+        "tag": "company",
+        "input": ["Software Development", 
+        "Product Development", 
+        "Software Engineering",
+        "Scrum Team",
+        "Agile Development Team",
+        "Consulting",
+        "Healthcare",
+        "Real Estate",
+        "Education",
+        "Insurance",
+        "Accounting",
+        "Human Resources",
+        "Media & Entertainment",
+        "Research & Development",
+        "Logistics & Supply Chain",
+        "Energy",
+        "Aerospace",
+        "Finance",
+        "Legal",
+        "Technology",
+        "Marketing & Advertising",
+        "Telecommunications",
+        "Information Technology",
+        "Pharmaceuticals",
+        "Hospitality",
+        "Automotive",
+        "Construction",
+        "Consumer Goods",
+        "Food & Beverage",
+        "Government",
+        "Nonprofit",
+        "Retail",
+        "Tourism",
+        "Transportation",
+        "Agriculture",
+        "Environmental Services",
+        "Biotechnology",
+        "Manufacturing",
+        "Mining",
+        "Textiles",
+        "Apparel",
+        "Chemical",
+        "Defense",
+        "Electronics",
+        "Publishing",
+        "Sports",
+        "Television & Film",
+        "Music",
+        "Venture Capital",
+        "Private Equity",
+        "Banking",
+        "Architecture",
+        "Engineering"
+    ],
+        "response": [
+            "So that's the kind of business you're looking to make a wiki about"
+        ]
+    },
+    {
+        "tag": "audience",
+        "input": [
+            "new hires",
+            "existing employees",
+            "team leaders and managers",
+            "executives",
+            "collaborative projects",
+            "interdepartmental communication",
+            "distributed teams",
+            "developers and engineers",
+            "it support",
+            "human resources",
+            "marketing and sales",
+            "clients",
+            "business partners",
+            "internal auditors",
+            "compliance officers"
+        ],
+        "response": ["So that's who you're looking to make a wiki for"]
+    },
+    {
+        "tag": "Structure",
+        "input": [ "Company",
+        "Employees",
+        "Operations",
+        "Products And Services",
+        "Communication",
+        "Legal",
+        "Miscellaneous"],
+        "response": [
+            "I understand."
+        ]
+    }
+]
+}
