@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import nltk
+import pickle
 from string import punctuation
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize
@@ -62,4 +63,8 @@ x_train.toarray()
 DecisionTree = DecisionTreeClassifier()
 DecisionTree.fit(x_train, y_train)
 
+with open('pickle/decisiontree.pkl', 'wb') as f:
+  pickle.dump(DecisionTree, f)
+
 pred = DecisionTree.predict(x_test)
+
