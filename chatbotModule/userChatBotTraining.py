@@ -29,7 +29,7 @@ stopwords = stopwords.words("english")
 lemmatizer = WordNetLemmatizer()
 label_encoder = LabelEncoder()
 
-with open("responses.json",encoding='utf-8') as file:
+with open("chatbotModule/responses.json",encoding='utf-8') as file:
   data = json.load(file)
 
 data2 = []
@@ -44,12 +44,17 @@ df = pd.DataFrame(data2)
 df.columns = ["Tag", "Input"]
 
 label_encoder.fit(df["Tag"])
+with open('pickle/label_encoder.pkl', 'wb') as f:
+  pickle.dump(label_encoder, f)
 
 df["clean_inputs"] = df["Input"].apply(lambda x: " ".join([lemmatizer.lemmatize(word.lower()) for word in x.split() if word.lower() not in [stopwords, punctuation]]))
 df["tag_inputs"] = df["Tag"].apply(lambda x: label_encoder.transform([x])).apply(lambda x: x[0])
 
 textVect = TfidfVectorizer(stop_words="english", ngram_range=(1,3))
 textVect.fit({word for word in df["clean_inputs"]})
+
+with open('pickle/textvect.pkl', 'wb') as f:
+  pickle.dump(textVect, f)
 
 x = df["clean_inputs"]
 y = df["tag_inputs"]
