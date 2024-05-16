@@ -5,4 +5,4 @@ app.config.from_pyfile('settings.py')
 
 @app.route("/")
 def helloWorld():
-    return "Hellow World"
+    return "Hello World"
