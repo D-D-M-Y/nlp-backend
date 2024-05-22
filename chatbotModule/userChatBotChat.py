@@ -50,3 +50,4 @@ while True:
         my_input = preprocess(my_input)
         pred = predict(my_input)
         chat_response = response(pred)
+        print(chat_response)
