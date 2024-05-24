@@ -11,6 +11,10 @@ NLTK
 
 ## How to use
 1. Install the environment from requirements.txt
+```
+pip install -r requirements.txt
+```
+
 2. Run the following code
 ```
 python -m flask run
