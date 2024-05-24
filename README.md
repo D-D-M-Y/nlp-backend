@@ -2,7 +2,7 @@
 A  server to run NLP processes of Open Lexica
 
 ## Backend
-Open Lexica's backend is responsible for processing user input, generating content using Mistral AI, performing text preprocessing, and conducting sentiment analysis. The backend also includes a file generator to create markdown files for the wiki.
+Open Lexica's backend is responsible for processing user input, generating content, performing text preprocessing, and conducting sentiment analysis. The backend also includes a file generator to create markdown files for the wiki.
 
 # Installation
 Prerequisites
@@ -28,7 +28,6 @@ Open Lexica is an application that generates a complete wiki in markdown files f
 -Input gathered from you will be used to query NousHermes for content generation.
 -Accessible and easy-to-share markdown format.
 -Customizable and self-hostable for your specific needs.
--Incorporates real-time information and content generation through Mistral AI.
 -Open-source and community-driven development.
 
 
