@@ -72,4 +72,4 @@ with open('pickle/decisiontree.pkl', 'wb') as f:
   pickle.dump(DecisionTree, f)
 
 pred = DecisionTree.predict(x_test)
-
+print(accuracy_score(y_test, pred))

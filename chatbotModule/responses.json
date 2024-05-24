@@ -2,13 +2,65 @@
     "intents":[
     {
         "tag": "greeting",
-        "input": ["Hi", "Hello", "Howdy", "Hi There", "Good day", "Good morning", "Good evening"],
-        "response": ["Hello, I understand you're looking to create a wiki ",
-        "Greetings! I see you're interested in setting up a wiki",
-        "Hey there! I noticed you're keen on establishing a wiki",
-        "Hello! It seems like you're interested in starting a wiki",
-        "Hi! I understand you're considering starting a wiki",
-        "Hey! I gather you're thinking about launching a wiki"]
+        "input": ["Hello!",
+                    "Hi there!",
+                    "Hey!",
+                    "Greetings!",
+                    "Good day!",
+                    "Hi!",
+                    "Hello, chatbot!",
+                    "Hey there!",
+                    "Howdy!",
+                    "What's up?",
+                    "Good morning!",
+                    "Good afternoon!",
+                    "Good evening!",
+                    "Yo!",
+                    "Hiya!",
+                    "Hey, how's it going?",
+                    "Hi, nice to meet you!",
+                    "Hello again!",
+                    "Hi, chatbot!",
+                    "Hey, what's new?", 
+                    "How are you"],
+        "response": ["I understand you're looking to create a wiki ",
+        "I see you're interested in setting up a wiki",
+        "I noticed you're keen on establishing a wiki",
+        "It seems like you're interested in starting a wiki",
+        "I understand you're considering starting a wiki",
+        "I gather you're thinking about launching a wiki"
+    ],
+        "follow-up":["Can we start by asking for the type of company or team you're looking to create a wiki for?",
+                    "To begin, could you tell us about the kind of company or team you want to create a wiki for?",
+                    "Let's start by discussing the type of company or team for which you are planning to create a wiki.",
+                    "Could we first identify the type of company or team you are looking to establish a wiki for?"
+                ]   
+    },
+    {
+        "tag": "bye",
+        "input": [
+            "Goodbye!",
+            "See you later!",
+            "Bye!",
+            "Talk to you soon!",
+            "Farewell!",
+            "Catch you later!",
+            "Until next time!",
+            "Later!",
+            "Take care!",
+            "Peace out!",
+            "So long!",
+            "Adios!",
+            "Bye for now!",
+            "I'm signing off.",
+            "Gotta go!",
+            "Have a great day!",
+            "Thanks, bye!",
+            "See you next time!",
+            "It's been nice talking to you. Goodbye!",
+            "Catch you on the flip side!"
+        ],
+        "response": ["Bye!, I hope you use OpenLexica again.", "Thanks for using OpenLexica"]
     },
     {
         "tag": "company",
@@ -69,8 +121,33 @@
     
         "response": [
             "So that's the kind of business you're looking to make a wiki about",
-            "Ah that's what you're looking to do."
-        ]
+            "Ah that's what you're looking to make a wiki for."
+        ],
+        "follow-up": ["What are your goals in creating a company wiki?",
+            "Can you outline your goals for developing a company wiki?",
+            "What are your intentions behind creating a company wiki?"]
+    },
+    {
+        "tag": "goal",
+        "input": [
+            "Centralized Knowledge Repository",
+            "Enhanced Communication",
+            "Onboarding and Training",
+            "Process Standardization",
+            "Improved Productivity",
+            "Knowledge Retention",
+            "Collaboration and Innovation",
+            "Transparency and Accountability",
+            "Adaptability and Scalability",
+            "Knowledge Upkeep"
+        ],
+        "response": ["I understand those are your goals for your company wiki", "Got it, these are the goals you've established for your wiki."],
+        "follow-up": [  "Can you tell me who this wiki is made for?",
+                        "Can you specify who this wiki is intended for?",
+                        "Could you let me know who the target audience for this wiki is?",
+                        "Who is this wiki designed for?",
+                        "Could you tell me who this wiki is aimed at?",
+                        "Can you explain who this wiki is created for?"]
     },
     {
         "tag": "audience",
@@ -91,19 +168,37 @@
             "internal auditors",
             "compliance officers"
         ],
-        "response": ["So that's who you're looking to make a wiki for", "So that's your audience"]
+        "response": ["So that's who you're looking to make a wiki for", "So that's your audience"],
+        "follow-up": ["Do you have any particular structure in mind?", 
+            "Is there a specific structure you envision for your wiki?",
+            "Do you have a certain layout planned for your wiki?",
+            "Have you thought about any particular format for your wiki?",
+            "What kind of structure do you have in mind for your wiki?",
+            "Is there a particular way you want to organize your wiki?"]
     },
     {
-        "tag": "Structure",
+        "tag": "structure",
         "input": [ "Company",
         "Employees",
         "Operations",
         "Products And Services",
         "Communication",
         "Legal",
-        "Miscellaneous"],
+        "Miscellaneous",
+        "Functional",
+        "Divisional",
+        "Matrix",
+        "Flat",
+        "Network",
+        "Product-Based",
+        "Geographic",
+        "Process-Based",
+        "Customer-Based",
+        "Hybrid",
+        "Team-Based",
+        "Holacracy"],
         "response": [
-            "I understand.", "Oh I see"
+            "I understand that's the structure you want.", "Oh I see"
         ]
     }
 ]
