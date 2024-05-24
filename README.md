@@ -15,9 +15,6 @@ Go to https//openlexica.com to see Open Lexica live.
 ## Backend
 Open Lexica's backend is responsible for processing user input, generating content using Mistral AI, performing text preprocessing, and conducting sentiment analysis. The backend also includes a file generator to create markdown files for the wiki.
 
-## Mistral AI
-Mistral AI is used to generate content based on user input. It uses context prompts to ensure the GPT returns the appropriate data structure. The prompts are designed to gather business-related information from users, which is then parsed and processed to create wiki content.
-
 ## Tokenization
 Text tokenization splits text into meaningful units like words or phrases. This is essential for further text processing tasks such as stemming, lemmatization, and part-of-speech (POS) tagging.
 
