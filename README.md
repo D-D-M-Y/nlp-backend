@@ -25,7 +25,7 @@ You need to set your own variables for running your API for AI to search the int
 
 Open Lexica is an application that generates a complete wiki in markdown files for your company using the power of language models.
 -Use your input to generate a homepage wiki and a file directory for other wiki files.
--Input gathered from you will be used to query NousHermes for content generation.
+-Input gathered from you will be used to query ChatGPT for content generation.
 -Accessible and easy-to-share markdown format.
 -Customizable and self-hostable for your specific needs.
 -Open-source and community-driven development.
