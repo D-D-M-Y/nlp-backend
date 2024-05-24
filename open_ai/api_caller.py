@@ -30,52 +30,58 @@ def make_api_call(user_message):
 def parse_list(output):
     headers = re.findall(r'\d+\..+?:\n', output)
     return headers
+            
+def make_api_call2(header_text):
+    global chat_log
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo-16k",
+        messages=chat_log + [
+            {"role": "system", "content": "You are Open Lexica, the AI-powered wiki assistant and you will assist people by making them a centralized wiki by first introducing yourself and by asking them questions."},
+            {"role": "system", "content":f"Generate relevant content for the {header_text}"},
+        ]
+    )
+    lexica_says = response.choices[0].message.content
+    chat_log.append({"role": "assistant", "content": lexica_says.strip("\n").strip()})
+    return lexica_says.strip("\n").strip()   
 
 def generate_md_files(headers):
-    """
-    Prompts the user if they want to generate Markdown files for each numbered header.
-
-    Args:
-        headers (list): The list of numbered headers.
-    """
     folder_name = "files"
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
-    
     for header in headers:
         header_text = header.strip().strip(':')
         filename = os.path.join(folder_name, f"{header_text}.md")
-        
-        if os.path.exists(filename):
-            choice = input(f"Do you want to update the content of '{header_text}' Markdown file? (y/n): ")
-            if choice.lower() == 'y':
-                with open(filename, 'a') as file:
-                    while True:
-                        child_content = input(f"Enter content for a child of '{header_text}' (or 'done' to finish): ")
-                        if child_content.lower() == 'done':
-                            break
-                        file.write(f"   - {child_content}\n")
-                print(f"Content updated successfully for '{header_text}'.")
-            else:
-                print(f"No changes made to '{header_text}'.")
-        else:
+        choice = input(f"Do you want to generate a Markdown file for '{header_text}'? (y/n): ")
+        if choice.lower() == 'y':
+            content = make_api_call2(header_text)
             with open(filename, 'w') as file:
-                file.write(header)
+                file.write(content)
                 print(f"Markdown file '{filename}' generated successfully.")
-                while True:
-                    child_content = input(f"Enter content for a child of '{header_text}' (or 'done' to finish): ")
-                    if child_content.lower() == 'done':
-                        break
-                    file.write(f"   - {child_content}\n")
-                print(f"Content added successfully for '{header_text}'.")
+        else:
+            print(f"No Markdown file generated for '{header_text}'.")
 
-
-while True:
-    user_message = input()
-    if user_message.lower() == "bye":
-        break
-    else:
+def interact_with_lexica(user_message):
+    global chat_log
+    headers = None
+    try:
+        if not os.listdir("files"):
+            headers = None
+    except FileNotFoundError:
+        headers = None
+    if headers is None:
         response = make_api_call(user_message)
         print("Open Lexica:", response)
         headers = parse_list(response)
         generate_md_files(headers)
+    else:
+        for header in headers:
+            header_text = header.strip().strip(':')
+            make_api_call2(header_text)
+
+if __name__ == "__main__":
+    while True:
+        user_message = input()
+        if user_message.lower() == "bye":
+            break
+        else:
+            interact_with_lexica(user_message)
