@@ -116,7 +116,8 @@
         "Private Equity",
         "Banking",
         "Architecture",
-        "Engineering"
+        "Engineering",
+        "Journalism"
     ],
     
         "response": [
@@ -139,7 +140,22 @@
             "Collaboration and Innovation",
             "Transparency and Accountability",
             "Adaptability and Scalability",
-            "Knowledge Upkeep"
+            "Knowledge Upkeep", 
+            "Improved Knowledge Sharing and Accessibility",
+            "Boosted Employee Onboarding and Productivity",
+            "Preserved Institutional Knowledge",
+            "Enhanced Collaboration",
+            "Streamlined Customer Support",
+            "Shared Knowledge",
+            "Documentation",
+            "Facilitating Logistics",
+            "Improved Communication and Collaboration",
+            "Standardization and Best Practices",
+            "Knowledge Sharing and Innovation",
+            "Internal Knowledge Sharing",
+            "Transparency and Accountability",
+            "Compliance and Regulatory Requirements",
+            "Continuous Improvement and Feedback"
         ],
         "response": ["I understand those are your goals for your company wiki", "Got it, these are the goals you've established for your wiki."],
         "follow-up": [  "Can you tell me who this wiki is made for?",
@@ -166,7 +182,12 @@
             "clients",
             "business partners",
             "internal auditors",
-            "compliance officers"
+            "compliance officers",
+            "Employees",
+            "Managers and Supervisors",
+            "Potential Investors or Partners",
+            "Regulatory Agencies",
+            "General Public"
         ],
         "response": ["So that's who you're looking to make a wiki for", "So that's your audience"],
         "follow-up": ["Do you have any particular structure in mind?", 
@@ -178,25 +199,21 @@
     },
     {
         "tag": "structure",
-        "input": [ "Company",
-        "Employees",
-        "Operations",
-        "Products And Services",
-        "Communication",
-        "Legal",
-        "Miscellaneous",
-        "Functional",
-        "Divisional",
-        "Matrix",
-        "Flat",
-        "Network",
-        "Product-Based",
-        "Geographic",
-        "Process-Based",
-        "Customer-Based",
-        "Hybrid",
-        "Team-Based",
-        "Holacracy"],
+        "input": [ "Company Employees Operations Products And Services Communication Legal Miscellaneous",
+        "Functional Divisional Matrix Flat Network Product-Based Geographic Process-Based Customer-Based Hybrid Team-Based Holacracy",
+        "name established location website contact departments facilities", 
+        "company name founding year location core values departments policies resources contacts",
+        "name founded location mission vision description services team",
+        "Introduction About Overview Product Line How to Use Quality Assurance",
+        "company name founded year mission vision locations departments projects",
+        "Introduction Mission and Values Company Structure Departments and Teams Safety Protocols Environmental Initiatives Technological Infrastructure Employee Resources Contact Information",
+        "About Our Mission Company Values Product Offerings Store Locations Employee Handbook",
+        "About Products Customer Service Employee Resources Company Policies FAQs",
+        "Welcome to Wiki Table of Contents About Services Offered Operating Hours Contact Information Staff Directory Policies and Procedures Safety Guidelines Customer Service Standards Equipment and Tools Training and Development FAQ",
+        "Production Process Company Resources Project Management ",
+        "About Us Services Offered Employee Guidelines Client Policies Safety Procedures Quality Assurance Contact Information",
+        "Company Overview Mission Statement Core Values Services Fleet Technology Sustainability Initiatives Community Engagement Contact Information"
+    ],
         "response": [
             "I understand that's the structure you want.", "Oh I see"
         ]
