@@ -33,9 +33,10 @@ def preprocess(input_string):
 def predict(input_text_vect):
     check = NaiveBayes.predict_proba(input_text_vect)
     print(check)
+    check = [x for inner_check in check for x in inner_check]
     result = NaiveBayes.predict(input_text_vect)
     result = label_encoder.inverse_transform(result)[0]
-    return result
+    return result, check
     
 def gen_response(string):
     response = None
