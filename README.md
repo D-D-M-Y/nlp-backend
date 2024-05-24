@@ -1,6 +1,28 @@
 # Open Lexica Backend
 A  server to run NLP processes of Open Lexica
 
+## Backend
+Open Lexica's backend is responsible for processing user input, generating content using Mistral AI, performing text preprocessing, and conducting sentiment analysis. The backend also includes a file generator to create markdown files for the wiki.
+
+# Installation
+Prerequisites
+Python 3.8 or higher
+NLTK
+
+## How to use
+1. Install the environment from requirements.txt
+2. Run the following code
+```
+python -m flask run
+```
+or
+```
+python -m flask --app .\app.py run
+```
+<br>
+You need to set your own variables for running your API for AI to search the internet
+
+
 Open Lexica is an application that generates a complete wiki in markdown files for your company using the power of language models.
 -Use your input to generate a homepage wiki and a file directory for other wiki files.
 -Input gathered from you will be used to query NousHermes for content generation.
@@ -9,11 +31,6 @@ Open Lexica is an application that generates a complete wiki in markdown files f
 -Incorporates real-time information and content generation through Mistral AI.
 -Open-source and community-driven development.
 
-## See it in action
-Go to https//openlexica.com to see Open Lexica live.
-
-## Backend
-Open Lexica's backend is responsible for processing user input, generating content using Mistral AI, performing text preprocessing, and conducting sentiment analysis. The backend also includes a file generator to create markdown files for the wiki.
 
 ## Tokenization
 Text tokenization splits text into meaningful units like words or phrases. This is essential for further text processing tasks such as stemming, lemmatization, and part-of-speech (POS) tagging.
@@ -29,22 +46,3 @@ The sentiment analysis component uses the VADER (Valence Aware Dictionary and sE
 Positive: Indicates positive sentiment.
 Negative: Indicates negative sentiment.
 Neutral: Indicates neutral sentiment.
-
-# Installation
-Prerequisites
-Python 3.8 or higher
-NLTK
-Mistral AI SDK
-
-## How to use
-1. Install the environment from requirements.txt
-2. Run the following code
-```
-python -m flask run
-```
-or
-```
-python -m flask --app .\app.py run
-```
-<br>
-You need to set your own variables for running your API for AI to search the internet
