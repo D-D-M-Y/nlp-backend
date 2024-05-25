@@ -4,11 +4,10 @@ from flask_cors import CORS, cross_origin
 from chatbotModule.userChatBotChat import gen_response, preprocess, predict, greet
 from open_ai.api_caller import *
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config.from_pyfile('settings.py')
 app.config['CORS_HEADERS'] = 'Content-Type'
-
 
 
 
