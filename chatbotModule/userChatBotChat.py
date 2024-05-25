@@ -54,24 +54,5 @@ def greet():
     intro_message = """Hello, I'm OpenLexica, an AI powered Wiki Creation Tool\n
                        I understand you're looking to create a wiki\n
                        Can we start by asking for the type of company or team you're looking to create a wiki for?"""
-# print("Hello, I'm OpenLexica, an AI powered Wiki Creation Tool")
-# intro, follow_up = gen_response("greeting")
-# print(intro)
-# print(follow_up)
-# while True:
-#     #Enter an input
-#     my_input = input()
-#     if my_input.lower() == "bye":
-#         break
-#     else:
-#         my_input = preprocess(my_input)
-#         pred = predict(my_input)
-#         print (pred)
-#         if pred != "structure":
-#             chat_response, follow_up = gen_response(pred)
-#             print(chat_response)
-#             print(follow_up)
-#         else:
-#             chat_response = gen_response(pred)
-#             print(chat_response)
+    return intro_message
         
