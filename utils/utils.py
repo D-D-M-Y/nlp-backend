@@ -2,7 +2,6 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-# from spellchecker import SpellChecker
 import os
 
 
@@ -11,7 +10,6 @@ nltk.download('stopwords')
 nltk.download('vader_lexicon')
 
 
-#spell = SpellChecker()
 
 def tokenize_text(text):
     """
