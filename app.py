@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
+#from flask_api import status
 from flask_cors import CORS, cross_origin
 from chatbotModule.userChatBotChat import gen_response, preprocess, predict, greet
 from open_ai.api_caller import *
 app = Flask(__name__)
-cors = CORS(app)
+CORS(app)
 
 app.config.from_pyfile('settings.py')
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -16,28 +17,38 @@ app.config.from_pyfile('settings.py')
 def helloWorld():
     return "Hello World"
 
-@app.route("/jude")
+@app.route("/openlexica/get_response")
 @cross_origin()
 def openLexica():
-    user_input = input("Your message: ")
-    
-    # Call the function from the imported module
-    make_api_call2(header_text)
-
+    data = request.form
+    if "context" in data:
+        response = make_api_call(data["context"])
+        headers = parse_list(response)
+        generate_md_files(headers)
+    return "No context provided", 400
 
 
 @app.route("/openlexica/greet", methods=['GET'])
 @cross_origin()
-def greetLexica():
+def greet_lexica():
+
+    """
+    A greeting message from OpenLexica
+
+    Return:
+    greeting (str): returns a json greeting string
+    """
     greeting = greet()
-    return jsonify({
+    response = jsonify({
         "res": f"{greeting}",
         "sender": "backend"
     })
+    repsonse.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route("/openlexica/response", methods=['POST'])
 @cross_origin()
-def chatWithLexica():
+def chat_with_lexica():
     """
     The main chatting module for openlexica. Takes in a user input from a chat request and returns a response to the user.
 
@@ -95,8 +106,7 @@ def chatWithLexica():
     if pred == 'structure':
         structure = data["chat"]
     lexica_response = gen_response(pred)
-
-    return jsonify({
+    response = jsonify({
             "res": {
                 "chatresponse": f"{lexica_response}",
                 "company": company if context_c or company != '' else None,
@@ -106,3 +116,6 @@ def chatWithLexica():
             },
             "sender": "backend"
         })
+    repsonse.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
