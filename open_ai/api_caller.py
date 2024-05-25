@@ -51,32 +51,14 @@ def generate_md_files(headers):
     for header in headers:
         header_text = header.strip().strip(':')
         filename = os.path.join(folder_name, f"{header_text}.md")
-        choice = input(f"Do you want to generate a Markdown file for '{header_text}'? (y/n): ")
-        if choice.lower() == 'y':
-            content = make_api_call2(header_text)
-            with open(filename, 'w') as file:
-                file.write(content)
-                print(f"Markdown file '{filename}' generated successfully.")
-        else:
-            print(f"No Markdown file generated for '{header_text}'.")
-
-def interact_with_lexica(user_message):
-    global chat_log
-    headers = None
-    try:
-        if not os.listdir("files"):
-            headers = None
-    except FileNotFoundError:
-        headers = None
-    if headers is None:
-        response = make_api_call(user_message)
-        print("Open Lexica:", response)
-        headers = parse_list(response)
-        generate_md_files(headers)
-    else:
-        for header in headers:
-            header_text = header.strip().strip(':')
-            make_api_call2(header_text)
+        #choice = input(f"Do you want to generate a Markdown file for '{header_text}'? (y/n): ")
+        #if choice.lower() == 'y':
+        content = make_api_call2(header_text)
+        with open(filename, 'w') as file:
+            file.write(content)
+            print(f"Markdown file '{filename}' generated successfully.")
+        #else:
+        #    print(f"No Markdown file generated for '{header_text}'.")
 
 if __name__ == "__main__":
     while True:
