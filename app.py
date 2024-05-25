@@ -17,8 +17,7 @@ app.config.from_pyfile('settings.py')
 def helloWorld():
     return "Hello World"
 
-@app.route("/openlexica/get_response")
-@cross_origin()
+@app.route("/openlexica/get_response", methods=['POST'])
 def openLexica():
     data = request.form
     if "context" in data:
@@ -29,7 +28,6 @@ def openLexica():
 
 
 @app.route("/openlexica/greet", methods=['GET'])
-@cross_origin()
 def greet_lexica():
 
     """
@@ -43,11 +41,9 @@ def greet_lexica():
         "res": f"{greeting}",
         "sender": "backend"
     })
-    repsonse.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 @app.route("/openlexica/response", methods=['POST'])
-@cross_origin()
 def chat_with_lexica():
     """
     The main chatting module for openlexica. Takes in a user input from a chat request and returns a response to the user.
@@ -116,6 +112,5 @@ def chat_with_lexica():
             },
             "sender": "backend"
         })
-    repsonse.headers.add('Access-Control-Allow-Origin', '*')
 
     return response
