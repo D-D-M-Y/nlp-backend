@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from chatbotModule.userChatBotChat import gen_response, preprocess, predict, greet
-from open_ai.api_caller import interact_with_lexica
+from open_ai.api_caller import *
 app = Flask(__name__)
 cors = CORS(app)
 
