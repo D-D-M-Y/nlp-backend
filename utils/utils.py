@@ -2,14 +2,16 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from spellchecker import SpellChecker
+# from spellchecker import SpellChecker
+import os
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('vader_lexicon')
 
 
-spell = SpellChecker()
+#spell = SpellChecker()
 
 def tokenize_text(text):
     """
@@ -59,3 +61,12 @@ def sentiment_analysis(text):
     scores = sid.polarity_scores(text)
 
     return scores['compound']
+
+def get_title(directory):
+    return [f[:-3] for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+
+def get_content(filename):
+    f = os.open(f"files/{filename}.md", 'r')
+    s = f.read()
+    os.close(f)
+    return s
