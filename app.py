@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from chatbotModule.userChatBotChat import gen_response, preprocess, predict, greet
 from open_ai.api_caller import *
+from utils.utils import *
+import os
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -15,13 +17,38 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def helloWorld():
     return "Hello World"
 
-@app.route("/openlexica/get_response", methods=['POST'])
-def openLexica():
+@app.route("/openlexica/get_file_content/<filename>", methods=["GET"])
+def get_file_content(filename):
+    content = get_content(filename)
+    if content != "":
+        response = jsonify({"res": content, "sender": "backend"})
+        return response
+
+    return "File has no content", 404
+
+@app.route("/openlexica/get_file_titles", methods=["GET"])
+def get_file_titles():
+    if os.path.exists('files'):
+        titles = get_title('files')
+        if titles:
+            response = jsonify({"res": titles, "sender": "backend"})
+            return response
+            
+    return "No file titles found", 404
+
+@app.route("/openlexica/generate_files", methods=['POST'])
+def content_generation():
     data = request.form
     if "context" in data:
-        response = make_api_call(data["context"])
-        headers = parse_list(response)
+        ai_response = make_api_call(data["context"])
+        headers = parse_list(ai_response)
         generate_md_files(headers)
+        response = jsonify({
+            "res": "Successfully generated files and content for each file",
+            "sender": "backend"
+        })
+        return response
+        
     return "No context provided", 400
 
 
