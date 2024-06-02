@@ -38,7 +38,7 @@ def get_file_titles():
 
 @app.route("/openlexica/generate_files", methods=['POST'])
 def content_generation():
-    data = request.form
+    data = request.json
     if "context" in data:
         ai_response = make_api_call(data["context"])
         headers = parse_list(ai_response)
@@ -88,54 +88,57 @@ def chat_with_lexica():
     structure (str): A string value containing a chat object for a user request on the structure the company wiki needs.
     For company wiki context.
     """
-    data = request.form
-    input_chat = preprocess(data["chat"])
-    pred, check = predict(input_chat)
-    if all(prob < 0.30 for prob in check):
-        return jsonify({
-            "res": f"I don't understand your request of {data["chat"]}",
-            "sender": "backend"
-        })
-    company, goal, audience, structure = "", "", "", ""
-    context_c, context_g, context_a, context_s = False, False, False, False
+    data = request.json
     print(data)
-    print(type(data["company"]))
-    if "company" in data and data["company"] != '':
-        company = data["company"]
-        context_c = True
-    if "goal" in data and data["goal"] != '':
-        goal = data["goal"]
-        context_g = True
-    if "audience" in data and data["audience"] != '':
-        audience = data["audience"]
-        context_a = True
-    if "structure" in data and data["structure"] != '':
-        structure = data["structure"]
-        context_s = True
+    if "chat" in data:
+        input_chat = preprocess(data["chat"])
+        pred, check = predict(input_chat)
+        if all(prob < 0.30 for prob in check):
+            return jsonify({
+                "res": {"chatresponse":f"I don't understand your request of {data["chat"]}"},
+                "sender": "backend"
+            })
+        company, goal, audience, structure = "", "", "", ""
+        context_c, context_g, context_a, context_s = False, False, False, False
+        print(data)
+        if "company" in data and data["company"] != '':
+            company = data["company"]
+            context_c = True
+        if "goal" in data and data["goal"] != '':
+            goal = data["goal"]
+            context_g = True
+        if "audience" in data and data["audience"] != '':
+            audience = data["audience"]
+            context_a = True
+        if "structure" in data and data["structure"] != '':
+            structure = data["structure"]
+            context_s = True
 
-    if False:
-        # context = data["company"] + data["goal"] + data["audience"] + data["structure"]
-        # interact_with_lexica(context)
-        print("hello")
+        if False:
+            # context = data["company"] + data["goal"] + data["audience"] + data["structure"]
+            # interact_with_lexica(context)
+            print("hello")
 
-    if pred == 'company':
-        company = data["chat"]
-    if pred == 'goal':
-        goal = data["chat"]
-    if pred == 'audience':
-        audience = data["chat"]
-    if pred == 'structure':
-        structure = data["chat"]
-    lexica_response = gen_response(pred)
-    response = jsonify({
-            "res": {
-                "chatresponse": f"{lexica_response}",
-                "company": company if context_c or company != '' else None,
-                "goal": goal if context_g or goal != ''else None,
-                "audience": audience if context_a or audience != '' else None,
-                "structure": structure if context_s or structure != ''  else None,
-            },
-            "sender": "backend"
-        })
+        if pred == 'company':
+            company = data["chat"]
+        if pred == 'goal':
+            goal = data["chat"]
+        if pred == 'audience':
+            audience = data["chat"]
+        if pred == 'structure':
+            structure = data["chat"]
+        lexica_response = gen_response(pred)
+        response = jsonify({
+                "res": {
+                    "chatresponse": lexica_response,
+                    "company": company if context_c or company != '' else None,
+                    "goal": goal if context_g or goal != ''else None,
+                    "audience": audience if context_a or audience != '' else None,
+                    "structure": structure if context_s or structure != ''  else None,
+                },
+                "sender": "backend"
+            })
 
-    return response
+        return response
+    else:
+        return "Invalid request, your json may have an error", 400

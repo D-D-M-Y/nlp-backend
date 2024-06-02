@@ -39,15 +39,17 @@ def predict(input_text_vect):
     return result, check
     
 def gen_response(string):
-    response = None
+    response = []
     for x in data["intents"]:
         if x["tag"] == string:
-            response = random.choice(x["response"])
+            initial_res = random.choice(x["response"])
+            response.append(initial_res)
+            print(response)
             if "follow-up" in x:
                 follow_up = random.choice(x["follow-up"])
-                return response,follow_up
-            else:
-                return response
+                response.append(follow_up)
+                print(response)
+            return response
 
 
 def greet():

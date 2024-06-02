@@ -64,7 +64,7 @@ def get_title(directory):
     return [f[:-3] for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
 def get_content(filename):
-    f = os.open(f"files/{filename}.md", 'r')
+    f = open(f"files/{filename}.md", 'r')
     s = f.read()
-    os.close(f)
+    f.close()
     return s

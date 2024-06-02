@@ -32,17 +32,15 @@ def parse_list(output):
     return headers
             
 def make_api_call2(header_text):
-    global chat_log
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-16k",
-        messages=chat_log + [
-            {"role": "system", "content": "You are Open Lexica, the AI-powered wiki assistant and you will assist people by making them a centralized wiki by first introducing yourself and by asking them questions."},
-            {"role": "system", "content":f"Generate relevant content for the {header_text}"},
+        messages= [
+            {"role": "system", "content": "You are Open Lexica, the AI-powered wiki assistant and you will assist people by generating wiki content."},
+            {"role": "system", "content":f"Generate relevant content for the {header_text}. Use a .md format."},
         ]
     )
     lexica_says = response.choices[0].message.content
-    chat_log.append({"role": "assistant", "content": lexica_says.strip("\n").strip()})
-    return lexica_says.strip("\n").strip()   
+    return lexica_says  
 
 def generate_md_files(headers):
     folder_name = "files"
