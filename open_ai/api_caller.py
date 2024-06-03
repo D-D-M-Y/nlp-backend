@@ -36,7 +36,7 @@ def make_api_call2(header_text):
         model="gpt-3.5-turbo-16k",
         messages= [
             {"role": "system", "content": "You are Open Lexica, the AI-powered wiki assistant and you will assist people by generating wiki content."},
-            {"role": "system", "content":f"Generate relevant content for the {header_text}. Use a .md format."},
+            {"role": "system", "content":f"Generate relevant content for the {header_text}. Do not generate additional messages outside of the relevant content."},
         ]
     )
     lexica_says = response.choices[0].message.content
